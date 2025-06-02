@@ -6,11 +6,9 @@ on:
       - main
   pull_request:
     branches:
-      - main  
+      - main
 
 env:
-  # CONFIGURE HERE: Replace this hostname with your Databricks workspace.
-  # Example: https://db-sme-demo-docs.cloud.databricks.com/
   DATABRICKS_HOST: https://dbc-c2e8445d-159d.cloud.databricks.com/
 
 jobs:
@@ -22,36 +20,85 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v4
 
-      # Add this step to install Python (optional, only if you need it locally)
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.11' # Specify a version like '3.9' if needed
+          python-version: '3.11'
 
-      - name: Run test notebook
-        uses: databricks/run-notebook@main
-        with:
-          # Uses the PAT stored as a GitHub secret
-          databricks-token: ${{ secrets.DATABRICKS_PAT }}
+      - name: Set up Databricks CLI
+        uses: databricks/setup-cli@main
 
-          # CONFIGURE HERE: Replace with your notebook path
-          # Example: notebooks/run_unit_tests.py
-          local-notebook-path: notebooks/run_unit_tests.py
+      - name: Run notebook as job
+        env:
+          DATABRICKS_TOKEN: ${{ secrets.DATABRICKS_PAT }}
+          DATABRICKS_HOST: ${{ env.DATABRICKS_HOST }}
+        run: |
+          databricks jobs create --json '{
+            "name": "EDA transforms helper module unit tests",
+            "existing_cluster_id": "0508-171136-mqtgzryx",
+            "notebook_task": {
+              "notebook_path": "notebooks/run_unit_tests.py"
+            }
+          }'
+          # Alternatively, if you already have a job_id, use:
+          # databricks jobs run-now --job-id <job_id>
 
-          # CONFIGURE HERE: Replace with your Databricks cluster ID
-          # Example: 0525-025754-t3vqgyf7
-          existing-cluster-id: 0508-171136-mqtgzryx
 
-          git-commit: "${{ github.event.pull_request.head.sha }}"
 
-          access-control-list-json: >
-            [
-              {
-                "group_name": "users",
-                "permission_level": "CAN_VIEW"
-              }
-            ]
-          run-name: "EDA transforms helper module unit tests"
+# name: Run pre-merge Databricks tests
+
+# on:
+#   push:
+#     branches:
+#       - main
+#   pull_request:
+#     branches:
+#       - main  
+
+# env:
+#   # CONFIGURE HERE: Replace this hostname with your Databricks workspace.
+#   # Example: https://db-sme-demo-docs.cloud.databricks.com/
+#   DATABRICKS_HOST: https://dbc-c2e8445d-159d.cloud.databricks.com/
+
+# jobs:
+#   unit-test-notebook:
+#     runs-on: ubuntu-latest
+#     timeout-minutes: 15
+
+#     steps:
+#       - name: Checkout repo
+#         uses: actions/checkout@v4
+
+#       # Add this step to install Python (optional, only if you need it locally)
+#       - name: Set up Python
+#         uses: actions/setup-python@v4
+#         with:
+#           python-version: '3.11' # Specify a version like '3.9' if needed
+
+#       - name: Run test notebook
+#         uses: databricks/run-notebook@main
+#         with:
+#           # Uses the PAT stored as a GitHub secret
+#           databricks-token: ${{ secrets.DATABRICKS_PAT }}
+
+#           # CONFIGURE HERE: Replace with your notebook path
+#           # Example: notebooks/run_unit_tests.py
+#           local-notebook-path: notebooks/run_unit_tests.py
+
+#           # CONFIGURE HERE: Replace with your Databricks cluster ID
+#           # Example: 0525-025754-t3vqgyf7
+#           existing-cluster-id: 0508-171136-mqtgzryx
+
+#           git-commit: "${{ github.event.pull_request.head.sha }}"
+
+#           access-control-list-json: >
+#             [
+#               {
+#                 "group_name": "users",
+#                 "permission_level": "CAN_VIEW"
+#               }
+#             ]
+#           run-name: "EDA transforms helper module unit tests"
 
 
 
