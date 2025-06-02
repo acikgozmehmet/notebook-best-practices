@@ -7,26 +7,27 @@
 #%pip install -r ~/requirements.txt
 #%pip install -r ../requirements.txt
 
+%pip install attrs==21.4.0 cycler==0.11.0 fonttools==4.33.3 iniconfig==1.1.1 kiwisolver==1.4.2 matplotlib==3.5.1 numpy==1.22.3 packaging==21.3 pandas==1.4.2 pillow==9.3.0 pluggy==1.0.0 py==1.11.0 py4j==0.10.9.5 pyarrow==7.0.0 pyparsing==3.0.8 pyspark==3.2.2 pytest==7.2.0 python-dateutil==2.8.2 pytz==2022.1 six==1.16.0 tomli==2.0.1 wget==3.2
 
-import os
+# import os
 
-# os.chdir('..')
-current_dir = os.getcwd()
-print(f"Files in {current_dir}:\n")
-with os.scandir(current_dir) as entries:
-    for entry in entries:
-        print(entry.name)
+# # os.chdir('..')
+# current_dir = os.getcwd()
+# print(f"Files in {current_dir}:\n")
+# with os.scandir(current_dir) as entries:
+#     for entry in entries:
+#         print(entry.name)
 
 
-print(f"Current path is {os.getcwd()} ")
-requirements_path = '../requirements.txt'
+# print(f"Current path is {os.getcwd()} ")
+# requirements_path = '../requirements.txt'
 
-if os.path.exists(requirements_path):
-    with open(requirements_path, 'r') as file:
-        print(file.read())
-    %pip install -r requirements_path
-else:
-    print(f"File {requirements_path} does not exist.")
+# if os.path.exists(requirements_path):
+#     with open(requirements_path, 'r') as file:
+#         print(file.read())
+#     %pip install -r requirements_path
+# else:
+#     print(f"File {requirements_path} does not exist.")
 
 # COMMAND ----------
 
