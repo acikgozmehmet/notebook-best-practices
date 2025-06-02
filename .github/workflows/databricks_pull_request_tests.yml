@@ -22,6 +22,12 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v2
 
+      # Add this step to install Python (optional, only if you need it locally)
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11' # Specify a version like '3.9' if needed
+
       - name: Run test notebook
         uses: databricks/run-notebook@main
         with:
