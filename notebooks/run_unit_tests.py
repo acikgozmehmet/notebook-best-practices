@@ -7,7 +7,29 @@
 #%pip install -r ~/requirements.txt
 #%pip install -r ../requirements.txt
 
-%pip install attrs==21.4.0 cycler==0.11.0 fonttools==4.33.3 iniconfig==1.1.1 kiwisolver==1.4.2 matplotlib==3.5.1 numpy==1.22.3 packaging==21.3 pandas==1.4.2 pillow==9.3.0 pluggy==1.0.0 py==1.11.0 py4j==0.10.9.5 pyarrow==7.0.0 pyparsing==3.0.8 pyspark==3.2.2 pytest==7.2.0 python-dateutil==2.8.2 pytz==2022.1 six==1.16.0 tomli==2.0.1 wget==3.2
+# Install packages individually
+%pip install attrs==21.4.0
+%pip install cycler==0.11.0
+%pip install fonttools==4.33.3
+%pip install iniconfig==1.1.1
+%pip install kiwisolver==1.4.2
+%pip install matplotlib==3.5.1
+%pip install numpy==1.22.3
+%pip install packaging==21.3
+%pip install pandas==1.4.2
+%pip install pillow==9.3.0
+%pip install pluggy==1.0.0
+%pip install py==1.11.0
+%pip install py4j==0.10.9.5
+%pip install pyarrow==7.0.0
+%pip install pyparsing==3.0.8
+%pip install pyspark==3.2.2
+%pip install pytest==7.2.0
+%pip install python-dateutil==2.8.2
+%pip install pytz==2022.1
+%pip install six==1.16.0
+%pip install tomli==2.0.1
+%pip install wget==3.2
 
 # import os
 
