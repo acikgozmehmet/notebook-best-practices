@@ -73,6 +73,8 @@ repo_root = os.path.dirname(os.path.dirname(notebook_path))
 os.chdir(f'/Workspace/{repo_root}')
 %pwd
 
+print(f"Current path is {os.getcwd()} ")
+
 # Skip writing pyc files on a readonly filesystem.
 sys.dont_write_bytecode = True
 
