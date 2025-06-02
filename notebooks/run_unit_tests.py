@@ -10,6 +10,7 @@
 
 import os
 
+print(f"Current path is {os.getcwd()} ")
 requirements_path = '../requirements.txt'
 
 if os.path.exists(requirements_path):
