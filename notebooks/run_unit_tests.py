@@ -5,7 +5,19 @@
 
 #!cp ../requirements.txt ~/.
 #%pip install -r ~/requirements.txt
-%pip install -r ../requirements.txt
+#%pip install -r ../requirements.txt
+
+%python
+import os
+
+requirements_path = '../requirements.txt'
+
+if os.path.exists(requirements_path):
+    with open(requirements_path, 'r') as file:
+        print(file.read())
+    %pip install -r requirements_path
+else:
+    print(f"File {requirements_path} does not exist.")
 
 # COMMAND ----------
 
