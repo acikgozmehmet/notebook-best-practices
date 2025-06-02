@@ -1,7 +1,12 @@
 name: Run pre-merge Databricks tests
 
 on:
+  push:
+    branches:
+      - main
   pull_request:
+    branches:
+      - main  
 
 env:
   # CONFIGURE HERE: Replace this hostname with your Databricks workspace.
