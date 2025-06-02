@@ -29,7 +29,7 @@ jobs:
           python-version: '3.11' # Specify a version like '3.9' if needed
 
       - name: Run test notebook
-        uses: databricks/run-notebook@main
+        uses: acikgozmehmet/notebook-best-practices@main
         with:
           # Uses the PAT stored as a GitHub secret
           databricks-token: ${{ secrets.DATABRICKS_PAT }}
