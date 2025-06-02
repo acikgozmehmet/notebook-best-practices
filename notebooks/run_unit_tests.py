@@ -10,7 +10,7 @@
 
 import os
 
-os.chdir('..')
+# os.chdir('..')
 current_dir = os.getcwd()
 print(f"Files in {current_dir}:\n")
 with os.scandir(current_dir) as entries:
