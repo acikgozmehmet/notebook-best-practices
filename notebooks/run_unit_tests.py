@@ -10,6 +10,13 @@
 
 import os
 
+current_dir = os.getcwd()
+print(f"Files in {current_dir}:")
+with os.scandir(current_dir) as entries:
+    for entry in entries:
+        print(entry.name)
+
+
 print(f"Current path is {os.getcwd()} ")
 requirements_path = '../requirements.txt'
 
