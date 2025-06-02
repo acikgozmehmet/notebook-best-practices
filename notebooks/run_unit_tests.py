@@ -14,7 +14,7 @@
 %pip install iniconfig==1.1.1
 %pip install kiwisolver==1.4.2
 %pip install matplotlib==3.5.1
-%pip install numpy==1.22.3
+%pip install numpy
 %pip install packaging==21.3
 %pip install pandas==1.4.2
 %pip install pillow==9.3.0
