@@ -21,7 +21,7 @@
 %pip install pluggy==1.0.0
 %pip install py==1.11.0
 %pip install py4j==0.10.9.5
-%pip install pyarrow==7.0.0
+%pip install pyarrow
 %pip install pyparsing==3.0.8
 %pip install pyspark==3.2.2
 %pip install pytest==7.2.0
