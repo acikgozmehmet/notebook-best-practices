@@ -7,7 +7,7 @@
 #%pip install -r ~/requirements.txt
 #%pip install -r ../requirements.txt
 
-%python
+%%python
 import os
 
 requirements_path = '../requirements.txt'
